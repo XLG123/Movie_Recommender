@@ -17,6 +17,11 @@ class DiscoverViewController: UIViewController, UITableViewDataSource, UITableVi
     var upcomingList = [[String:Any]]()
     var add_count = 0
     
+    var trendingListAll = [[String:Any]]() // instance variable to save the data returned by API request
+    var popularListAll = [[String:Any]]()
+    var upcomingListAll = [[String:Any]]()
+    var movie_categoriesWithAll = Array(repeating: [[String:Any]](), count: 3)
+    
 //    var movie_categories = [[[String:Any]]]() //this dict will contain the names of movie categories as key and the movies arrays of dicts as value.
     var movie_categories = Array(repeating: [[String:Any]](), count: 3)
     //To create an array of specific size in Swift, use Array initialiser syntax and pass this specific size. We also need to pass the default value for these elements in the Array. To use Array initialiser syntax, we need to specify repeating or default value, and the count
@@ -34,6 +39,7 @@ class DiscoverViewController: UIViewController, UITableViewDataSource, UITableVi
         super.viewDidLoad()
         tableView.dataSource = self //specifying the data will come from this view controller
         tableView.delegate = self
+
 
         // add the searchController as navigation item of this view controller
 //        self.navigationItem.searchController = searchController
@@ -66,6 +72,55 @@ class DiscoverViewController: UIViewController, UITableViewDataSource, UITableVi
         return movie_groups[section]
     }
     
+//////    // Sets the color of the section header
+//    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+//        view.tintColor = .yellow
+//    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+//        //initially get the frame of your Tableview
+//        let frame: CGRect = tableView.frame
+//        // set the frame for UIbutton where is comes in View
+//        let ViewAllButton: UIButton = UIButton(frame: CGRect(x: 100, y: 0, width: 200, height: 50)) //frame.size.width - 60
+//        ViewAllButton.setTitle("View All")
+        
+        let sectionHeaderView = UIView() // view for the section headers
+        
+        let sectionHeaderLabel = UILabel()
+        sectionHeaderLabel.text = movie_groups[section]
+        sectionHeaderLabel.textColor = .white
+        sectionHeaderLabel.font = UIFont.boldSystemFont(ofSize: 25.0)
+        sectionHeaderLabel.frame = CGRect(x: 20, y: 5, width: 250, height: 40)
+        sectionHeaderView.addSubview(sectionHeaderLabel)
+        
+        // View All button configuration
+        let viewAllButton = UIButton()
+        viewAllButton.frame = CGRect(x: 330, y: 5, width: 60, height: 30)
+        viewAllButton.setTitle("View All", for: .normal)
+        viewAllButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15) // customize font size
+        viewAllButton.tag = section //set the button's tag as section number where the button is/is clicked
+        viewAllButton.addTarget(self, action: #selector(viewAllButtonClicked(sender:)), for: .touchUpInside)
+        sectionHeaderView.addSubview(viewAllButton) // add the button to the header view
+
+        return sectionHeaderView
+    }
+    @objc func viewAllButtonClicked(sender: UIButton){
+        
+        let movies_list = movie_categoriesWithAll[sender.tag] //tag will contain the section number of where the button is
+        let section_title = movie_groups[sender.tag]
+        let movie_category = [section_title: movies_list]
+        self.performSegue(withIdentifier: "discoverToViewAll", sender: movie_category)
+        // the prepare for segue function is called first with the parameters before the segue is performed.
+        
+//        let alert = UIAlertController(
+//               title: "Howdy!", message: "You tapped me!",
+//               preferredStyle: .alert)
+//           alert.addAction(
+//               UIAlertAction(title: "OK", style: .cancel))
+//           self.present(alert, animated: true)
+    }
+    
     // Number of rows in section
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -90,10 +145,6 @@ class DiscoverViewController: UIViewController, UITableViewDataSource, UITableVi
 //
 //    }
     
-    // Sets the color of the section header
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        view.tintColor = .yellow
-    }
     
     // MARK: - Collection view configuratiion
     
@@ -128,6 +179,14 @@ class DiscoverViewController: UIViewController, UITableViewDataSource, UITableVi
         return cell
     }
     
+    // This function is called when the user selects an item(movie) in the collection View
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let movie = movie_categories[collectionView.tag][indexPath.row]
+//        print(type(of: movie))
+        self.performSegue(withIdentifier: "discoverToDetails", sender: movie)
+        // the prepare for segue function is called first with the parameters before the segue is performed.
+    }
+    
 
     // MARK: - API Requests Methods
     func getTrendingMovies() {
@@ -143,9 +202,11 @@ class DiscoverViewController: UIViewController, UITableViewDataSource, UITableVi
              } else if let data = data {
                     let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
 //                print(dataDictionary)
-                self.trendingList = dataDictionary["results"] as! [[String : Any]]
+                self.trendingListAll = dataDictionary["results"] as! [[String : Any]] // stores all movies for the category returned by the API
+                self.trendingList = Array(self.trendingListAll.prefix(upTo: 10)) // gets only the first 10 movies returned by API
 //                print(self.trendingList)
                 self.movie_categories[0] = self.trendingList
+                self.movie_categoriesWithAll[0] = self.trendingListAll
                 self.add_count = self.add_count + 1
                 print("add_count trending: \(self.add_count)")
                 // Reloads your table view data
@@ -170,9 +231,12 @@ class DiscoverViewController: UIViewController, UITableViewDataSource, UITableVi
              } else if let data = data {
                     let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
 //                print(dataDictionary)
-                self.popularList = dataDictionary["results"] as! [[String : Any]]
+//                self.popularList = dataDictionary["results"] as! [[String : Any]]
+                self.popularListAll = dataDictionary["results"] as! [[String : Any]]
+                self.popularList = Array(self.popularListAll.prefix(upTo: 10)) // gets only the first 10 movies returned by API
 //                print(self.popularList)
                 self.movie_categories[1] = self.popularList
+                self.movie_categoriesWithAll[1] = self.popularListAll
                 self.add_count = self.add_count + 1
 //                print("add_count popular: \(self.add_count)")
                 // Reloads your table view data
@@ -196,10 +260,13 @@ class DiscoverViewController: UIViewController, UITableViewDataSource, UITableVi
                     print(error.localizedDescription)
              } else if let data = data {
                     let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
-//                print(dataDictionary)
-                self.upcomingList = dataDictionary["results"] as! [[String : Any]]
+////                print(dataDictionary)
+//                self.upcomingList = dataDictionary["results"] as! [[String : Any]]
+                self.upcomingListAll = dataDictionary["results"] as! [[String : Any]]
+                self.upcomingList = Array(self.upcomingListAll.prefix(upTo: 10)) // gets only the first 10 movies returned by API
 //                print(self.upcomingList)
                 self.movie_categories[2] = self.upcomingList
+                self.movie_categoriesWithAll[2] = self.upcomingListAll
                 self.add_count = self.add_count + 1
 //                print("add_count upcoming: \(self.add_count)")
                 // Reloads your table view data
@@ -208,6 +275,28 @@ class DiscoverViewController: UIViewController, UITableViewDataSource, UITableVi
         }
         task.resume()
         
+    }
+    
+
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        if segue.identifier == "discoverToDetails" {
+            let detailsVC = segue.destination as! MovieDetailsViewController
+            detailsVC.movieSelected = sender as! [String:Any]?// note that the movie was passed as argument for sender
+        }
+        else if segue.identifier == "discoverToViewAll" {
+            let viewMoreVC = segue.destination as! ViewMoreViewController
+            viewMoreVC.movies_list = sender as! [String: [[String:Any]]]?
+        }
+        // Note: 
+        // fixed a problem of the segue screen loading twice by
+        // recreating the segue so it connects the view controller
+        // to the details view controller rather than from the cell
+        // to the details vc
     }
     
     
@@ -233,18 +322,5 @@ class DiscoverViewController: UIViewController, UITableViewDataSource, UITableVi
 //
 //        }
 //    }
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 
 }
