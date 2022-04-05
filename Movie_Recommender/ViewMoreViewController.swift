@@ -1,9 +1,3 @@
-
-
-
-
-
-
 //
 //  ViewMoreViewController.swift
 //  Movie_Recommender

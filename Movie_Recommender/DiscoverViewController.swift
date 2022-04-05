@@ -1,8 +1,3 @@
-
-
-
-
-
 //
 //  DiscoverViewController.swift
 //  Movie_Recommender

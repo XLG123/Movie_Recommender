@@ -1,6 +1,3 @@
-
-
-
 //
 //  ViewMoreCell.swift
 //  Movie_Recommender
