@@ -20,13 +20,6 @@ class SearchResultsViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
-        
-        // Below code taken from website https://mobikul.com/customise-the-uisearchbar-in-swift/
-        //UISearchBar contains the UITextField which can be identified through key “searchField”. Therefore we can access the UITextField through the key and perform necessary changes with it.
-        let searchTextfield = searchBar.value(forKey: "searchField") as? UITextField
-        searchTextfield!.textColor = UIColor.white //makes text color of search bar white
-        // Above code was taken from online website
-        
         searchResultsTableView.delegate = self
         searchResultsTableView.dataSource = self
         searchResultsTableView.rowHeight = 170
@@ -52,12 +45,7 @@ class SearchResultsViewController: UIViewController, UITableViewDelegate, UITabl
             print("The search text is: \(searchBar.text!)")
             getSearchResults(query: query)
         }
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.text = ""
-        searchBar.resignFirstResponder() // dismisses keyboard
-    }
+    }        
     
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -86,15 +74,7 @@ class SearchResultsViewController: UIViewController, UITableViewDelegate, UITabl
         
         return cell
     }
-    
-    // This function is called when the user selects an item(movie) in the table View
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let movie = searchResults[indexPath.row]
-        self.performSegue(withIdentifier: "searchToDetails", sender: movie)
-    }
   
-    
-    // MARK - API Call
     func getSearchResults(query: String) {
         let api_key = "425089d4394daaa7a241ed4b96a4c194"
         let urlString = "https://api.themoviedb.org/3/search/movie?api_key=\(api_key)&query=\(query)"
@@ -119,17 +99,14 @@ class SearchResultsViewController: UIViewController, UITableViewDelegate, UITabl
         task.resume()
     }
 
-
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        
-        let detailsVC = segue.destination as! MovieDetailsViewController
-        detailsVC.movieSelected = sender as! [String:Any]?// note that the movie was passed as argument for sender
-        
     }
+    */
 
 }
