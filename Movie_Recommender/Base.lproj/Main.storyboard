@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bGH-MB-IrD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bGH-MB-IrD">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -23,7 +23,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DiscoverTableCell" rowHeight="330" id="WBV-HP-lV1" customClass="DiscoverTableCell" customModule="Movie_Recommender" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="330"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="330"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WBV-HP-lV1" id="s0b-NL-K64">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="330"/>
@@ -120,11 +120,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Iv8-2o-z1V">
-                                <rect key="frame" x="0.0" y="139" width="414" height="757"/>
+                                <rect key="frame" x="0.0" y="144" width="414" height="752"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchResultCell" rowHeight="170" id="DMh-2R-Mu0" customClass="searchResultCell" customModule="Movie_Recommender" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="170"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="170"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DMh-2R-Mu0" id="PaY-Bq-y1g">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="170"/>
@@ -163,7 +163,7 @@
                                 </prototypes>
                             </tableView>
                             <searchBar contentMode="redraw" placeholder="Movie name" translatesAutoresizingMaskIntoConstraints="NO" id="eSb-AN-Pqq">
-                                <rect key="frame" x="0.0" y="88" width="414" height="51"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                         </subviews>
@@ -230,45 +230,10 @@
         <!--Watchlists-->
         <scene sceneID="IE7-3J-iyq">
             <objects>
-                <viewController id="aeP-4h-Grf" customClass="WatchlistsViewController" customModule="Movie_Recommender" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="aeP-4h-Grf" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sJf-mX-7qH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="uy2-lx-YVJ">
-                                <rect key="frame" x="20" y="88" width="374" height="768"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="movielistitem" id="2BN-ww-viv">
-                                        <rect key="frame" x="0.0" y="44.5" width="374" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2BN-ww-viv" id="nuz-wQ-ODq">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="20" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="List Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PN2-AW-X3H">
-                                                    <rect key="frame" x="20" y="11" width="334" height="27"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="PN2-AW-X3H" secondAttribute="trailing" constant="20" symbolic="YES" id="E1t-u0-NjY"/>
-                                                <constraint firstAttribute="bottom" secondItem="PN2-AW-X3H" secondAttribute="bottom" constant="5.5" id="cNL-I3-74V"/>
-                                                <constraint firstItem="PN2-AW-X3H" firstAttribute="top" secondItem="nuz-wQ-ODq" secondAttribute="top" constant="11" id="dSD-Yn-B0x"/>
-                                                <constraint firstItem="PN2-AW-X3H" firstAttribute="leading" secondItem="nuz-wQ-ODq" secondAttribute="leading" constant="20" symbolic="YES" id="uU3-WK-pff"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="aeP-4h-Grf" id="O1y-X9-LC3"/>
-                                    <outlet property="delegate" destination="aeP-4h-Grf" id="4ll-3D-JQF"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="gxW-Lr-xVH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
@@ -276,7 +241,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qa2-ez-atd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1708.6956521739132" y="965.625"/>
+            <point key="canvasLocation" x="1710" y="966"/>
         </scene>
         <!--Watchlists-->
         <scene sceneID="qnB-0S-rLk">
@@ -300,6 +265,7 @@
         <!--Recommended For You-->
         <scene sceneID="UJt-aS-BA5">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mwx-NS-EuH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="3wD-k3-kpz" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ydm-oY-knl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -309,13 +275,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Recommended For You" id="NVb-Oz-Aty"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mwx-NS-EuH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2757" y="966"/>
         </scene>
         <!--For You-->
         <scene sceneID="cBZ-tX-TUf">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3fy-b1-YaY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ClC-DK-RSy" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="For You" image="star" catalog="system" id="hJa-Dc-NRy"/>
                     <toolbarItems/>
@@ -328,7 +294,6 @@
                         <segue destination="3wD-k3-kpz" kind="relationship" relationship="rootViewController" id="cOa-fF-F8N"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3fy-b1-YaY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2756.521739130435" y="247.76785714285714"/>
         </scene>
