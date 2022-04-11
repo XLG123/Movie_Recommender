@@ -80,12 +80,6 @@ class DiscoverViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-//        //initially get the frame of your Tableview
-//        let frame: CGRect = tableView.frame
-//        // set the frame for UIbutton where is comes in View
-//        let ViewAllButton: UIButton = UIButton(frame: CGRect(x: 100, y: 0, width: 200, height: 50)) //frame.size.width - 60
-//        ViewAllButton.setTitle("View All")
-        
         let sectionHeaderView = UIView() // view for the section headers
         
         let sectionHeaderLabel = UILabel()
@@ -106,6 +100,7 @@ class DiscoverViewController: UIViewController, UITableViewDataSource, UITableVi
 
         return sectionHeaderView
     }
+    
     @objc func viewAllButtonClicked(sender: UIButton){
         
         let movies_list = movie_categoriesWithAll[sender.tag] //tag will contain the section number of where the button is
@@ -113,13 +108,6 @@ class DiscoverViewController: UIViewController, UITableViewDataSource, UITableVi
         let movie_category = [section_title: movies_list]
         self.performSegue(withIdentifier: "discoverToViewAll", sender: movie_category)
         // the prepare for segue function is called first with the parameters before the segue is performed.
-        
-//        let alert = UIAlertController(
-//               title: "Howdy!", message: "You tapped me!",
-//               preferredStyle: .alert)
-//           alert.addAction(
-//               UIAlertAction(title: "OK", style: .cancel))
-//           self.present(alert, animated: true)
     }
     
     // Number of rows in section
@@ -196,12 +184,13 @@ class DiscoverViewController: UIViewController, UITableViewDataSource, UITableVi
         let url = URL(string: urlString)!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+        // let session = URLSession.shared // shared URLSessions uses the default config with respect to caching, cookies and other web stuff.
         let task = session.dataTask(with: request) { (data, response, error) in
              // This will run when the network request returns
              if let error = error {
                     print(error.localizedDescription)
              } else if let data = data {
-                    let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
+                let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
 //                print(dataDictionary)
                 self.trendingListAll = dataDictionary["results"] as! [[String : Any]] // stores all movies for the category returned by the API
                 self.trendingList = Array(self.trendingListAll.prefix(upTo: 10)) // gets only the first 10 movies returned by API
@@ -214,7 +203,8 @@ class DiscoverViewController: UIViewController, UITableViewDataSource, UITableVi
                 self.tableView.reloadData() //calls on the table view function
              }
         }
-        task.resume()
+        task.resume() // starts the data task which sends the request to the server on a background thread.
+                      // So the app is immediately free to continue - meaning URLSession is asychronous.
         
     }
     
