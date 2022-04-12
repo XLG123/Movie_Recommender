@@ -43,13 +43,16 @@ class SearchResultsViewController: UIViewController, UITableViewDelegate, UITabl
         searchBar.resignFirstResponder() //dismisses the keyboard when search button is clicked
     }
     
+    /*
+        This function gets the text user enters in the search text field and calls the getSearchResults()
+        with the query.
+    */
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         var query = searchBar.text!
         if !query.isEmpty {
             if query.contains(" ") {
                 query = query.replacingOccurrences(of: " ", with: "%20") //spaces represented by %20 in the url
             }
-            print("The search text is: \(searchBar.text!)")
             getSearchResults(query: query)
         }
     }
@@ -74,7 +77,7 @@ class SearchResultsViewController: UIViewController, UITableViewDelegate, UITabl
         }
         
         let img_base_url = "https://image.tmdb.org/t/p/"
-        let poster_size = "original" //w342
+        let poster_size = "w185" //w342
         guard let poster_path = movie["poster_path"] as? String else {
             cell.movieImage.image = UIImage(named: "no_image_available")
             return cell
@@ -95,6 +98,11 @@ class SearchResultsViewController: UIViewController, UITableViewDelegate, UITabl
   
     
     // MARK - API Call
+    
+    /*
+        This function makes an API Call to the TMDB API with the search query, and loads the tableview
+        with the search results returned.
+    */
     func getSearchResults(query: String) {
         let api_key = "425089d4394daaa7a241ed4b96a4c194"
         let urlString = "https://api.themoviedb.org/3/search/movie?api_key=\(api_key)&query=\(query)"
@@ -104,17 +112,19 @@ class SearchResultsViewController: UIViewController, UITableViewDelegate, UITabl
             return
         }
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: 10)
-        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+        let session = URLSession.shared
         let task = session.dataTask(with: request) { (data, response, error) in
             // This will run when the network request returns
             if let error = error {
                    print(error.localizedDescription)
             } else if let data = data {
                    let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
-                //  print(dataDictionary)
                 self.searchResults = dataDictionary["results"] as! [[String : Any]]
             }
-            self.searchResultsTableView.reloadData()
+            
+            DispatchQueue.main.async {
+                self.searchResultsTableView.reloadData()
+            }
         }
         task.resume()
     }
