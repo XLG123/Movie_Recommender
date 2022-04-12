@@ -37,15 +37,18 @@ class MovieDetailsViewController: UIViewController {
     func showMovieDetails(movie: [String:Any]!) {
         if movie != nil {
             let baseURL = "https://image.tmdb.org/t/p/"
-            let img_size = "original" //w342
-            let backdropPath = movie["backdrop_path"] as! String
+            let img_size = "w185"
+            // some movies don't have backdrop images so make sure to check 
+            if let backdropPath = movie["backdrop_path"] as? String {
+                let backdrop_img_size = "w500"
+                let backdropURLString = baseURL + backdrop_img_size + backdropPath
+                let backdropURL = URL(string: backdropURLString)
+                backdropImage.af.setImage(withURL: backdropURL!)
+            }
+            
             let posterPath = movie["poster_path"] as! String
             let posterURLString = baseURL + img_size + posterPath
             let posterURL = URL(string: posterURLString)
-            let backdropURLString = baseURL + img_size + backdropPath
-            let backdropURL = URL(string: backdropURLString)
-            
-            backdropImage.af.setImage(withURL: backdropURL!)
             posterImage.af.setImage(withURL: posterURL!)
     
             if movie["title"] != nil {

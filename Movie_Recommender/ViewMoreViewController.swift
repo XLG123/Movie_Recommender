@@ -56,7 +56,7 @@ class ViewMoreViewController: UIViewController, UITableViewDataSource, UITableVi
         }
 
         let img_base_url = "https://image.tmdb.org/t/p/"
-        let poster_size = "original" //w342
+        let poster_size = "w185" //w342
         guard let poster_path = movie["poster_path"] as? String else {
             cell.movieImage.image = UIImage(named: "no_image_available")
             return cell

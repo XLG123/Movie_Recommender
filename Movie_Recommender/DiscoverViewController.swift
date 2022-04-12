@@ -30,30 +30,15 @@ class DiscoverViewController: UIViewController, UITableViewDataSource, UITableVi
    
     @IBOutlet weak var tableView: UITableView!
     
-//    // specifying that the search results will be displayed in the SearchResultsViewController VC
-//    let searchController = UISearchController(searchResultsController: SearchResultsViewController())
-//
-//    let searchResultsVC = SearchResultsViewController() //instance of search results view controller
-//
-//
+    
+    let api_key = "425089d4394daaa7a241ed4b96a4c194"
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self //specifying the data will come from this view controller
         tableView.delegate = self
-
-
-        // add the searchController as navigation item of this view controller
-//        self.navigationItem.searchController = searchController
-//        // allow users to see the search bar even when scrolling
-//        self.navigationItem.hidesSearchBarWhenScrolling = false
-//        self.searchController.searchResultsUpdater = self //the query for search will come from this view controller
-
         getTrendingMovies()
         getPopularMovies()
         getUpcomingMovies()
-//        print("Hello")
-        
-        // Do any additional setup after loading the view.
     }
     
     
@@ -68,16 +53,7 @@ class DiscoverViewController: UIViewController, UITableViewDataSource, UITableVi
         return movie_categories.count
     }
     
-    //Header for each section
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return movie_groups[section]
-    }
-    
-//////    // Sets the color of the section header
-//    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-//        view.tintColor = .yellow
-//    }
-    
+    // Creates customized view for the table view section headers
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let sectionHeaderView = UIView() // view for the section headers
@@ -101,13 +77,15 @@ class DiscoverViewController: UIViewController, UITableViewDataSource, UITableVi
         return sectionHeaderView
     }
     
+    // Function called when the View All button is tapped in a section header
     @objc func viewAllButtonClicked(sender: UIButton){
-        
-        let movies_list = movie_categoriesWithAll[sender.tag] //tag will contain the section number of where the button is
+        //tag will contain the section number of where the button is
+        let movies_list = movie_categoriesWithAll[sender.tag]
         let section_title = movie_groups[sender.tag]
         let movie_category = [section_title: movies_list]
-        self.performSegue(withIdentifier: "discoverToViewAll", sender: movie_category)
+        
         // the prepare for segue function is called first with the parameters before the segue is performed.
+        self.performSegue(withIdentifier: "discoverToViewAll", sender: movie_category)
     }
     
     // Number of rows in section
@@ -118,7 +96,6 @@ class DiscoverViewController: UIViewController, UITableViewDataSource, UITableVi
     // Table view cell config
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DiscoverTableCell", for: indexPath) as! DiscoverTableCell
-//        print("table view cell config")
         cell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.section)
         return cell
     }
@@ -130,8 +107,6 @@ class DiscoverViewController: UIViewController, UITableViewDataSource, UITableVi
 //        print("setting the data")
 //        print(indexPath.section)
 //        cell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.section)
-//
-//
 //    }
     
     
@@ -148,8 +123,6 @@ class DiscoverViewController: UIViewController, UITableViewDataSource, UITableVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DiscoverCollectionCell", for: indexPath) as! DiscoverCollectionCell
 
-//        print("IN COLLECTON VIEW")
-//        print(collectionView.tag)
         let movie_list = movie_categories[collectionView.tag]
         let movie = movie_list[indexPath.row]
         if movie["title"] != nil {
@@ -159,7 +132,7 @@ class DiscoverViewController: UIViewController, UITableViewDataSource, UITableVi
         }
 //      From TMDB doc: To build an image URL, you will need 3 pieces of data. The base_url, size and file_path. Simply combine them all and you will have a fully qualified URL.
         let img_base_url = "https://image.tmdb.org/t/p/"
-        let poster_size = "original" //w342
+        let poster_size = "w185" //w342
         let poster_path = movie["poster_path"] as! String
         let imgURLString = (img_base_url + poster_size + poster_path)
         let imgURL = URL(string: imgURLString)
@@ -173,48 +146,55 @@ class DiscoverViewController: UIViewController, UITableViewDataSource, UITableVi
         let movie = movie_categories[collectionView.tag][indexPath.row]
 //        print(type(of: movie))
         self.performSegue(withIdentifier: "discoverToDetails", sender: movie)
-        // the prepare for segue function is called first with the parameters before the segue is performed.
+        // the prepare function is called first with the parameters before the segue is performed.
     }
     
 
     // MARK: - API Requests Methods
+    
+    // This function gets a list of trending movies from the TMDB API and loads the tableview with the data
     func getTrendingMovies() {
-        let api_key = "425089d4394daaa7a241ed4b96a4c194"
         let urlString = "https://api.themoviedb.org/3/trending/all/day?api_key=\(api_key)" //url String
         let url = URL(string: urlString)!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
-        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
-        // let session = URLSession.shared // shared URLSessions uses the default config with respect to caching, cookies and other web stuff.
+        let session = URLSession.shared // shared URLSessions uses the default config
+        
+        // Note: URLSession is asychronous so the request is sent on a background thread.
         let task = session.dataTask(with: request) { (data, response, error) in
-             // This will run when the network request returns
              if let error = error {
                     print(error.localizedDescription)
              } else if let data = data {
+                
+                // parses json data to dict
                 let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
-//                print(dataDictionary)
-                self.trendingListAll = dataDictionary["results"] as! [[String : Any]] // stores all movies for the category returned by the API
-                self.trendingList = Array(self.trendingListAll.prefix(upTo: 10)) // gets only the first 10 movies returned by API
-//                print(self.trendingList)
+                self.trendingListAll = dataDictionary["results"] as! [[String : Any]] // gets just the array of movies
+                
+                // slices the trendingListAll array to get just the first 10 movies
+                self.trendingList = Array(self.trendingListAll.prefix(upTo: 10))
                 self.movie_categories[0] = self.trendingList
+                // adds the list to this array at index 0 which is also the section number of the trending list on the table view
                 self.movie_categoriesWithAll[0] = self.trendingListAll
-                self.add_count = self.add_count + 1
-                print("add_count trending: \(self.add_count)")
-                // Reloads your table view data
-                self.tableView.reloadData() //calls on the table view function
+
+                // Anything related to the UI must be performed on the main thread,
+                // therefore use DispatchQueue.main.async to switch back to the main thread.
+                DispatchQueue.main.async {
+                    //recalls the table view functions to reload the table view with new data
+                    self.tableView.reloadData()
+                }
              }
         }
         task.resume() // starts the data task which sends the request to the server on a background thread.
-                      // So the app is immediately free to continue - meaning URLSession is asychronous.
-        
     }
     
+    
+    // So the app is immediately free to continue - meaning URLSession is asychronous.
+//        print("On main thread? " + (Thread.current.isMainThread ? "Yes" : "No"))
 
     func getPopularMovies() {
-        let api_key = "425089d4394daaa7a241ed4b96a4c194"
         let urlString = "https://api.themoviedb.org/3/movie/popular?api_key=\(api_key)" //url String
         let url = URL(string: urlString)!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
-        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+        let session = URLSession.shared //URL session is asynchronous so the session runs on a background thread
         let task = session.dataTask(with: request) { (data, response, error) in
              // This will run when the network request returns
              if let error = error {
@@ -228,10 +208,12 @@ class DiscoverViewController: UIViewController, UITableViewDataSource, UITableVi
 //                print(self.popularList)
                 self.movie_categories[1] = self.popularList
                 self.movie_categoriesWithAll[1] = self.popularListAll
-                self.add_count = self.add_count + 1
-//                print("add_count popular: \(self.add_count)")
-                // Reloads your table view data
-                self.tableView.reloadData() //calls on the table view function
+                
+                DispatchQueue.main.async {
+                    print("On main thread? " + (Thread.current.isMainThread ? "Yes" : "No"))
+                    self.tableView.reloadData()
+                    //recall the table view functions to reloads the table view with new data
+                }
              }
         }
         task.resume()
@@ -240,28 +222,31 @@ class DiscoverViewController: UIViewController, UITableViewDataSource, UITableVi
     
 
     func getUpcomingMovies() {
-        let api_key = "425089d4394daaa7a241ed4b96a4c194"
         let urlString = "https://api.themoviedb.org/3/movie/upcoming?api_key=\(api_key)" //url String
         let url = URL(string: urlString)!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
-        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+        let session = URLSession.shared
         let task = session.dataTask(with: request) { (data, response, error) in
              // This will run when the network request returns
              if let error = error {
                     print(error.localizedDescription)
              } else if let data = data {
                     let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
-////                print(dataDictionary)
-//                self.upcomingList = dataDictionary["results"] as! [[String : Any]]
+                
                 self.upcomingListAll = dataDictionary["results"] as! [[String : Any]]
                 self.upcomingList = Array(self.upcomingListAll.prefix(upTo: 10)) // gets only the first 10 movies returned by API
 //                print(self.upcomingList)
                 self.movie_categories[2] = self.upcomingList
                 self.movie_categoriesWithAll[2] = self.upcomingListAll
-                self.add_count = self.add_count + 1
-//                print("add_count upcoming: \(self.add_count)")
-                // Reloads your table view data
-                self.tableView.reloadData() //calls on the table view function
+
+                // Completion handler closure is performed on a background thread.
+                // Anything related to the UI must be performed on the main thread,
+                // therefore use DispatchQueue.main.async to switch back to the main thread.
+                DispatchQueue.main.async {
+                    print("On main thread? " + (Thread.current.isMainThread ? "Yes" : "No"))
+                    self.tableView.reloadData()
+                    //recall the table view functions to reloads the table view with new data
+                }
              }
         }
         task.resume()
