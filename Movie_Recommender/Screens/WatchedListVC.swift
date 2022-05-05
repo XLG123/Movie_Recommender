@@ -202,7 +202,9 @@ extension WatchedListVC:UITableViewDelegate,UITableViewDataSource{
             
             appDel.saveContext()
             if let movieIndex = watchedMovieIds.firstIndex(of: item.id) {
-                watchedMovieIds.remove(at: movieIndex)
+                if movieIndex < watchedMovieIds.count {
+                    watchedMovieIds.remove(at: movieIndex)
+                }
                 print(movieIndex)
             }
             deleteItem(indexNo: sender.tag)

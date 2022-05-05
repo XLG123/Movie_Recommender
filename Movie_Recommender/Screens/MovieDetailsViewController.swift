@@ -209,7 +209,9 @@ class MovieDetailsViewController: UIViewController, UICollectionViewDelegate, UI
                 likeBtn.tintColor = UIColor.init(red: 0/255, green: 255/255, blue: 0/255, alpha: 100)
             }else{
                 if let movieIndex = likedMovieIds.firstIndex(of: movieSelected["id"] as! Int64) {
-                    likedMovieIds.remove(at: movieIndex)
+                    if movieIndex < likedMovieIds.count {
+                        likedMovieIds.remove(at: movieIndex)
+                    }
                 }
                 likeBtn.setImage(UIImage(systemName: "hand.thumbsdown"), for: .normal)
                 likeBtn.tintColor = UIColor.init(red: 255/255, green: 165/255, blue: 0/255, alpha: 100)
