@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,7 @@
 		6E7ACFFB27EA492100BEBF73 /* WatchlistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7ACFFA27EA492100BEBF73 /* WatchlistsViewController.swift */; };
 		96D42ED555D649B41047B856 /* Pods_Movie_RecommenderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 498109E5881C009B2B15F420 /* Pods_Movie_RecommenderUITests.framework */; };
 		9E4FE9C256011B2BFBC160C4 /* Pods_Movie_Recommender.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5333A0A5B40065A4A4135B9 /* Pods_Movie_Recommender.framework */; };
+		BCA5B089281C54C500801F14 /* movieDetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA5B088281C54C500801F14 /* movieDetailsCollectionViewCell.swift */; };
 		D2534E6627F2CE2300927443 /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2534E6527F2CE2300927443 /* MovieDetailsViewController.swift */; };
 		D293231D27E01DC5008DE520 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D293231C27E01DC5008DE520 /* AppDelegate.swift */; };
 		D293231F27E01DC5008DE520 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D293231E27E01DC5008DE520 /* SceneDelegate.swift */; };
@@ -30,6 +31,11 @@
 		D2EA719F27FBFC82007DF939 /* ViewMoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA719E27FBFC82007DF939 /* ViewMoreCell.swift */; };
 		D2F8BBCA27E9B18A00452466 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8BBC927E9B18900452466 /* SearchResultsViewController.swift */; };
 		D2F8BBCF27E9B60F00452466 /* searchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8BBCE27E9B60F00452466 /* searchResultCell.swift */; };
+		E83D39C5281ED4A700E4E499 /* movieapp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E83D39C3281ED4A600E4E499 /* movieapp.xcdatamodeld */; };
+		E83D39C9281EE15700E4E499 /* LikeListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83D39C8281EE15700E4E499 /* LikeListVC.swift */; };
+		E86A8225282017CB0008CEF4 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86A8224282017CB0008CEF4 /* MovieTableViewCell.swift */; };
+		E8728C8C281EF535005B9EC1 /* WatchListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8728C8B281EF535005B9EC1 /* WatchListVC.swift */; };
+		E8728C8E281EF540005B9EC1 /* WatchedListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8728C8D281EF540005B9EC1 /* WatchedListVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +64,7 @@
 		A56FA98829EB562ABA09AABC /* Pods-Movie_RecommenderUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movie_RecommenderUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Movie_RecommenderUITests/Pods-Movie_RecommenderUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B0F9C60BCE4C431F033FEF76 /* Pods-Movie_Recommender.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movie_Recommender.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Movie_Recommender/Pods-Movie_Recommender.debug.xcconfig"; sourceTree = "<group>"; };
 		B32D0377BD0A7DA4557C88A6 /* Pods_Movie_RecommenderTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movie_RecommenderTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCA5B088281C54C500801F14 /* movieDetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = movieDetailsCollectionViewCell.swift; sourceTree = "<group>"; };
 		C5333A0A5B40065A4A4135B9 /* Pods_Movie_Recommender.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movie_Recommender.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2534E6527F2CE2300927443 /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
 		D293231927E01DC4008DE520 /* Movie_Recommender.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movie_Recommender.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +92,11 @@
 		D2F8BBC927E9B18900452466 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		D2F8BBCE27E9B60F00452466 /* searchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchResultCell.swift; sourceTree = "<group>"; };
 		D76FF0A4D1B37D9238739326 /* Pods-Movie_Recommender.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movie_Recommender.release.xcconfig"; path = "Pods/Target Support Files/Pods-Movie_Recommender/Pods-Movie_Recommender.release.xcconfig"; sourceTree = "<group>"; };
+		E83D39C4281ED4A600E4E499 /* test1234.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = test1234.xcdatamodel; sourceTree = "<group>"; };
+		E83D39C8281EE15700E4E499 /* LikeListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeListVC.swift; sourceTree = "<group>"; };
+		E86A8224282017CB0008CEF4 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
+		E8728C8B281EF535005B9EC1 /* WatchListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListVC.swift; sourceTree = "<group>"; };
+		E8728C8D281EF540005B9EC1 /* WatchedListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchedListVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,22 +162,15 @@
 		D293231B27E01DC4008DE520 /* Movie_Recommender */ = {
 			isa = PBXGroup;
 			children = (
+				E83D39C7281ED51900E4E499 /* Cells */,
 				D293238B27E082C0008DE520 /* Data Models */,
-				D293235D27E022B5008DE520 /* DiscoverViewController.swift */,
-				D29323E727E0D73A008DE520 /* DiscoverTableCell.swift */,
-				D29323DD27E0D584008DE520 /* DiscoverCollectionCell.swift */,
-				D2EA719927FBA970007DF939 /* ViewMoreViewController.swift */,
-				D2EA719E27FBFC82007DF939 /* ViewMoreCell.swift */,
-				D2534E6527F2CE2300927443 /* MovieDetailsViewController.swift */,
-				D2F8BBC927E9B18900452466 /* SearchResultsViewController.swift */,
-				D2F8BBCE27E9B60F00452466 /* searchResultCell.swift */,
-				6E7ACFFA27EA492100BEBF73 /* WatchlistsViewController.swift */,
-				D2B1DBB32803F95400125973 /* WatchlistsTableViewCell.swift */,
+				E83D39C6281ED50000E4E499 /* Screens */,
 				D293231C27E01DC5008DE520 /* AppDelegate.swift */,
 				D293231E27E01DC5008DE520 /* SceneDelegate.swift */,
 				D293232227E01DC5008DE520 /* Main.storyboard */,
 				D293232527E01DC9008DE520 /* Assets.xcassets */,
 				D293232727E01DC9008DE520 /* LaunchScreen.storyboard */,
+				E83D39C3281ED4A600E4E499 /* movieapp.xcdatamodeld */,
 				D293232A27E01DC9008DE520 /* Info.plist */,
 			);
 			path = Movie_Recommender;
@@ -210,6 +215,35 @@
 				93E7B3BCCEA8F2371DADDDF7 /* Pods-Movie_RecommenderUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		E83D39C6281ED50000E4E499 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				D293235D27E022B5008DE520 /* DiscoverViewController.swift */,
+				D2EA719927FBA970007DF939 /* ViewMoreViewController.swift */,
+				D2534E6527F2CE2300927443 /* MovieDetailsViewController.swift */,
+				D2F8BBC927E9B18900452466 /* SearchResultsViewController.swift */,
+				6E7ACFFA27EA492100BEBF73 /* WatchlistsViewController.swift */,
+				E83D39C8281EE15700E4E499 /* LikeListVC.swift */,
+				E8728C8B281EF535005B9EC1 /* WatchListVC.swift */,
+				E8728C8D281EF540005B9EC1 /* WatchedListVC.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		E83D39C7281ED51900E4E499 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D29323E727E0D73A008DE520 /* DiscoverTableCell.swift */,
+				D2EA719E27FBFC82007DF939 /* ViewMoreCell.swift */,
+				D29323DD27E0D584008DE520 /* DiscoverCollectionCell.swift */,
+				D2F8BBCE27E9B60F00452466 /* searchResultCell.swift */,
+				D2B1DBB32803F95400125973 /* WatchlistsTableViewCell.swift */,
+				BCA5B088281C54C500801F14 /* movieDetailsCollectionViewCell.swift */,
+				E86A8224282017CB0008CEF4 /* MovieTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -383,19 +417,16 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Movie_Recommender/Pods-Movie_Recommender-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Movie_Recommender/Pods-Movie_Recommender-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Movie_Recommender/Pods-Movie_Recommender-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Movie_Recommender/Pods-Movie_Recommender-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Movie_Recommender/Pods-Movie_Recommender-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EBD7913737E84C4721942C89 /* [CP] Check Pods Manifest.lock */ = {
@@ -423,7 +454,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8728C8C281EF535005B9EC1 /* WatchListVC.swift in Sources */,
 				D29323B527E09DA5008DE520 /* TrendingMovies.swift in Sources */,
+				E86A8225282017CB0008CEF4 /* MovieTableViewCell.swift in Sources */,
 				6E7ACFFB27EA492100BEBF73 /* WatchlistsViewController.swift in Sources */,
 				D29323E827E0D73A008DE520 /* DiscoverTableCell.swift in Sources */,
 				D293235E27E022B5008DE520 /* DiscoverViewController.swift in Sources */,
@@ -433,11 +466,15 @@
 				D293239827E08452008DE520 /* Movie.swift in Sources */,
 				D293231D27E01DC5008DE520 /* AppDelegate.swift in Sources */,
 				D293231F27E01DC5008DE520 /* SceneDelegate.swift in Sources */,
+				E8728C8E281EF540005B9EC1 /* WatchedListVC.swift in Sources */,
 				D2534E6627F2CE2300927443 /* MovieDetailsViewController.swift in Sources */,
 				D2F8BBCA27E9B18A00452466 /* SearchResultsViewController.swift in Sources */,
+				BCA5B089281C54C500801F14 /* movieDetailsCollectionViewCell.swift in Sources */,
 				D2F8BBCF27E9B60F00452466 /* searchResultCell.swift in Sources */,
 				D29323BA27E0A9A8008DE520 /* MovieList.swift in Sources */,
+				E83D39C9281EE15700E4E499 /* LikeListVC.swift in Sources */,
 				D2EA719F27FBFC82007DF939 /* ViewMoreCell.swift in Sources */,
+				E83D39C5281ED4A700E4E499 /* movieapp.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -614,8 +651,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8HPPYP7536;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Movie_Recommender/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -623,6 +660,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cher.tsering.Movie-Recommender";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -634,8 +672,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8HPPYP7536;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Movie_Recommender/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -643,6 +681,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cher.tsering.Movie-Recommender";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -776,6 +815,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E83D39C3281ED4A600E4E499 /* movieapp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E83D39C4281ED4A600E4E499 /* test1234.xcdatamodel */,
+			);
+			currentVersion = E83D39C4281ED4A600E4E499 /* test1234.xcdatamodel */;
+			path = movieapp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D293231127E01DC4008DE520 /* Project object */;
 }
