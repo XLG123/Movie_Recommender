@@ -51,6 +51,7 @@ extension WatchedListVC:UITableViewDelegate,UITableViewDataSource{
         if items.count == 0 {
             let lbl = UILabel(frame: tableView.frame)
             lbl.text = "No Data"
+            lbl.textColor = UIColor(named: "white")
             lbl.textAlignment = .center
             tableV.backgroundView = lbl
             return items.count

@@ -41,6 +41,7 @@ extension WatchListVC:UITableViewDelegate,UITableViewDataSource{
         if items.count == 0 {
             let lbl = UILabel(frame: tableView.frame)
             lbl.text = "No Data"
+            lbl.textColor = UIColor(named: "white")
             lbl.textAlignment = .center
             tableV.backgroundView = lbl
             return items.count
@@ -98,6 +99,12 @@ extension WatchListVC:UITableViewDelegate,UITableViewDataSource{
             deleteItem(indexNo: indexPath.row)
         }
     }
+    
+//    // This function is called when the user selects an item(movie) in the table View
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let movie = items[indexPath.row]
+//        self.performSegue(withIdentifier: "searchToDetails", sender: movie)
+//    }
     
     // Delete a movie from list and remove the item from CoreData.
     func deleteItem(indexNo:Int){
@@ -216,4 +223,17 @@ extension WatchListVC:UITableViewDelegate,UITableViewDataSource{
             print("error executing fetch request: \(error)")
         }
     }
+    
+    
+//    // MARK: - Navigation
+//
+//    // In a storyboard-based application, you will often want to do a little preparation before navigation
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        // Get the new view controller using segue.destination.
+//        // Pass the selected object to the new view controller.
+//
+//        let detailsVC = segue.destination as! MovieDetailsViewController
+//        detailsVC.movieSelected = sender as! [String:Any]?// note that the movie was passed as argument for sender
+//
+//    }
 }

@@ -74,12 +74,12 @@ class MovieDetailsViewController: UIViewController, UICollectionViewDelegate, UI
                 self.storedItem = results[0]
                 print("Movie exist")
                 likeSelected = self.storedItem!.isLike
-                if likeSelected! {
-                    likeBtn.setImage(UIImage(systemName: "hand.thumbsup"), for: .normal)
+                if likeSelected! { // movie is liked, so change button to green filled thumbs up button
+                    likeBtn.setImage(UIImage(systemName: "hand.thumbsup.fill"), for: .normal)
                     likeBtn.tintColor = UIColor.init(red: 0/255, green: 255/255, blue: 0/255, alpha: 100)
-                }else{
-                    likeBtn.setImage(UIImage(systemName: "hand.thumbsdown"), for: .normal)
-                    likeBtn.tintColor = UIColor.init(red: 255/255, green: 165/255, blue: 0/255, alpha: 100)
+                } else {  // movie isn't liked, so button should be plain unfilled thumbs up button
+                    likeBtn.setImage(UIImage(systemName: "hand.thumbsup"), for: .normal)
+                    likeBtn.tintColor = UIColor.init(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0)
                 }
             }
         }
@@ -99,12 +99,18 @@ class MovieDetailsViewController: UIViewController, UICollectionViewDelegate, UI
                 let backdropURLString = baseURL + backdrop_img_size + backdropPath
                 let backdropURL = URL(string: backdropURLString)
                 backdropImage.af.setImage(withURL: backdropURL!)
+            } else {
+                posterImage.image = UIImage(named: "no_image_available")
             }
             
-            let posterPath = movie["poster_path"] as! String
-            let posterURLString = baseURL + img_size + posterPath
-            let posterURL = URL(string: posterURLString)
-            posterImage.af.setImage(withURL: posterURL!)
+            if let posterPath = movie["poster_path"] as? String {
+                let posterURLString = baseURL + img_size + posterPath
+                let posterURL = URL(string: posterURLString)
+                posterImage.af.setImage(withURL: posterURL!)
+            } else {
+                posterImage.image = UIImage(named: "no_image_available")
+            }
+            
             
             if movie["title"] != nil {
                 movieTitle.text = (movie["title"] as! String)
@@ -205,20 +211,21 @@ class MovieDetailsViewController: UIViewController, UICollectionViewDelegate, UI
         if let _ = likeSelected   {
             likeSelected = !likeSelected!
             if likeSelected! {
-                likeBtn.setImage(UIImage(systemName: "hand.thumbsup"), for: .normal)
+                likeBtn.setImage(UIImage(systemName: "hand.thumbsup.fill"), for: .normal)
                 likeBtn.tintColor = UIColor.init(red: 0/255, green: 255/255, blue: 0/255, alpha: 100)
-            }else{
+            } else{ // user unliked, meaning clicked like button when it was already liked
                 if let movieIndex = likedMovieIds.firstIndex(of: movieSelected["id"] as! Int64) {
                     if movieIndex < likedMovieIds.count {
                         likedMovieIds.remove(at: movieIndex)
                     }
                 }
-                likeBtn.setImage(UIImage(systemName: "hand.thumbsdown"), for: .normal)
-                likeBtn.tintColor = UIColor.init(red: 255/255, green: 165/255, blue: 0/255, alpha: 100)
+                likeBtn.setImage(UIImage(systemName: "hand.thumbsup"), for: .normal)
+                likeBtn.tintColor = UIColor.init(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0)
             }
-        }else{
+        } else{ // like button was't already pressed, so change it to filled thumbs up button
             likeSelected = true
-            likeBtn.setImage(UIImage(systemName: "hand.thumbsup"), for: .normal)
+            likeBtn.setImage(UIImage(systemName: "hand.thumbsup.fill"), for: .normal)
+            likeBtn.tintColor = UIColor.init(red: 0/255, green: 255/255, blue: 0/255, alpha: 100)
         }
         addUpdateCurrentMovie(isLike: likeSelected!)
     }
