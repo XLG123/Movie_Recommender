@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bGH-MB-IrD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bGH-MB-IrD">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -75,7 +76,7 @@
                                                 </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BqT-ML-0Ce" userLabel="Dislike Button">
-                                                <rect key="frame" x="237" y="360" width="26" height="26"/>
+                                                <rect key="frame" x="237" y="358" width="26" height="28"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" image="hand.thumbsdown" catalog="system">
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
@@ -187,10 +188,10 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="230" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hd5-i1-iPG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.071403063830000002" green="0.071403063830000002" blue="0.071403063830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ViewMoreCell" rowHeight="230" id="gyS-ea-iMp" customClass="ViewMoreCell" customModule="Movie_Recommender" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="230"/>
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="230"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gyS-ea-iMp" id="8vH-De-NB6">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="230"/>
@@ -250,7 +251,7 @@
                                 <color key="backgroundColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DiscoverTableCell" rowHeight="330" id="WBV-HP-lV1" customClass="DiscoverTableCell" customModule="Movie_Recommender" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="330"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="330"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WBV-HP-lV1" id="s0b-NL-K64">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="330"/>
@@ -319,7 +320,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1178" y="966"/>
+            <point key="canvasLocation" x="-1178.2608695652175" y="965.625"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="V7J-6A-qqT">
@@ -350,11 +351,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Iv8-2o-z1V">
-                                <rect key="frame" x="0.0" y="144" width="414" height="752"/>
+                                <rect key="frame" x="0.0" y="139" width="414" height="757"/>
                                 <color key="backgroundColor" red="0.070588235294117646" green="0.070588235294117646" blue="0.070588235294117646" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchResultCell" rowHeight="170" id="DMh-2R-Mu0" customClass="searchResultCell" customModule="Movie_Recommender" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="170"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="170"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DMh-2R-Mu0" id="PaY-Bq-y1g">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="170"/>
@@ -394,7 +395,7 @@
                                 </prototypes>
                             </tableView>
                             <searchBar contentMode="redraw" placeholder="Movie name" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eSb-AN-Pqq">
-                                <rect key="frame" x="0.0" y="88" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="51"/>
                                 <color key="barTintColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="search"/>
                                 <scopeButtonTitles>
@@ -473,18 +474,55 @@
         <!--Recommended For You-->
         <scene sceneID="UJt-aS-BA5">
             <objects>
-                <viewController id="3wD-k3-kpz" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ydm-oY-knl">
+                <viewController id="3wD-k3-kpz" customClass="RecommendationViewController" customModule="Movie_Recommender" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="igV-X2-F9w">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="6zQ-PD-XNF"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Recommended For You" id="NVb-Oz-Aty"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="0.071403063830000002" green="0.071403063830000002" blue="0.071403063830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="recMovieItem" rowHeight="230" id="7ag-ju-sMH" customClass="ViewMoreCell" customModule="Movie_Recommender" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="230"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7ag-ju-sMH" id="BNB-aT-8d3">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="230"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ikl-vF-iX8">
+                                            <rect key="frame" x="20" y="11" width="160" height="208"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="208" id="2UU-M9-8yL"/>
+                                                <constraint firstAttribute="width" constant="160" id="cv3-Jr-CCx"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L9q-XQ-9Nd">
+                                            <rect key="frame" x="188" y="20" width="206" height="24"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="L9q-XQ-9Nd" firstAttribute="top" secondItem="BNB-aT-8d3" secondAttribute="topMargin" constant="9" id="8uR-mj-FNE"/>
+                                        <constraint firstItem="L9q-XQ-9Nd" firstAttribute="trailing" secondItem="BNB-aT-8d3" secondAttribute="trailingMargin" id="G4h-14-9uh"/>
+                                        <constraint firstItem="Ikl-vF-iX8" firstAttribute="leading" secondItem="BNB-aT-8d3" secondAttribute="leadingMargin" id="Laz-Kg-nBK"/>
+                                        <constraint firstItem="Ikl-vF-iX8" firstAttribute="top" secondItem="BNB-aT-8d3" secondAttribute="topMargin" id="gdp-3O-G6z"/>
+                                        <constraint firstItem="L9q-XQ-9Nd" firstAttribute="leading" secondItem="Ikl-vF-iX8" secondAttribute="trailing" constant="8" symbolic="YES" id="iq5-vI-nvd"/>
+                                        <constraint firstItem="Ikl-vF-iX8" firstAttribute="bottom" secondItem="BNB-aT-8d3" secondAttribute="bottomMargin" id="m8M-on-ejp"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.071403063830000002" green="0.071403063830000002" blue="0.071403063830000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="movieImage" destination="Ikl-vF-iX8" id="XU3-du-Kun"/>
+                                    <outlet property="movieTitle" destination="L9q-XQ-9Nd" id="33s-mn-6HN"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Recommended For You" largeTitleDisplayMode="always" id="NVb-Oz-Aty"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mwx-NS-EuH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2757" y="1002"/>
+            <point key="canvasLocation" x="2756.521739130435" y="1001.7857142857142"/>
         </scene>
         <!--For You-->
         <scene sceneID="cBZ-tX-TUf">
@@ -492,9 +530,12 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ClC-DK-RSy" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="For You" image="star" catalog="system" id="hJa-Dc-NRy"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wqp-UU-tzX">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="wqp-UU-tzX">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -519,14 +560,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="movielistitem" id="1IN-28-xEq">
-                                        <rect key="frame" x="0.0" y="28" width="374" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1IN-28-xEq" id="k59-gw-NsR">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="345.5" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="20" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="List Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGg-ro-kB5">
-                                                    <rect key="frame" x="20" y="11" width="303" height="27"/>
+                                                    <rect key="frame" x="20" y="11" width="305.5" height="27"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -578,7 +619,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="YcU-2w-ETE"/>
+        <segue reference="PYd-8Q-O0P"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="hand.thumbsdown" catalog="system" width="128" height="128"/>

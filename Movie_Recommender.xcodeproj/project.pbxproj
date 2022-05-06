@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2CFFF04B2817E0F100C5E743 /* RecommendationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFFF04A2817E0F100C5E743 /* RecommendationViewController.swift */; };
 		6C90EE266459453EB820E6DA /* Pods_Movie_RecommenderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B32D0377BD0A7DA4557C88A6 /* Pods_Movie_RecommenderTests.framework */; };
 		6E7ACFFB27EA492100BEBF73 /* WatchlistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7ACFFA27EA492100BEBF73 /* WatchlistsViewController.swift */; };
 		96D42ED555D649B41047B856 /* Pods_Movie_RecommenderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 498109E5881C009B2B15F420 /* Pods_Movie_RecommenderUITests.framework */; };
@@ -50,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2CFFF04A2817E0F100C5E743 /* RecommendationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationViewController.swift; sourceTree = "<group>"; };
 		43DF7723604701DDDE5B238D /* Pods-Movie_RecommenderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movie_RecommenderTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Movie_RecommenderTests/Pods-Movie_RecommenderTests.release.xcconfig"; sourceTree = "<group>"; };
 		498109E5881C009B2B15F420 /* Pods_Movie_RecommenderUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movie_RecommenderUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E7ACFFA27EA492100BEBF73 /* WatchlistsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistsViewController.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				D2F8BBCE27E9B60F00452466 /* searchResultCell.swift */,
 				6E7ACFFA27EA492100BEBF73 /* WatchlistsViewController.swift */,
 				D2B1DBB32803F95400125973 /* WatchlistsTableViewCell.swift */,
+				2CFFF04A2817E0F100C5E743 /* RecommendationViewController.swift */,
 				D293231C27E01DC5008DE520 /* AppDelegate.swift */,
 				D293231E27E01DC5008DE520 /* SceneDelegate.swift */,
 				D293232227E01DC5008DE520 /* Main.storyboard */,
@@ -437,6 +440,7 @@
 				D2F8BBCA27E9B18A00452466 /* SearchResultsViewController.swift in Sources */,
 				D2F8BBCF27E9B60F00452466 /* searchResultCell.swift in Sources */,
 				D29323BA27E0A9A8008DE520 /* MovieList.swift in Sources */,
+				2CFFF04B2817E0F100C5E743 /* RecommendationViewController.swift in Sources */,
 				D2EA719F27FBFC82007DF939 /* ViewMoreCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -615,13 +619,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8HPPYP7536;
+				DEVELOPMENT_TEAM = H5KJ77LW2D;
 				INFOPLIST_FILE = Movie_Recommender/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cher.tsering.Movie-Recommender";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.islam.sarika.Movie-Recommender";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -635,13 +639,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8HPPYP7536;
+				DEVELOPMENT_TEAM = H5KJ77LW2D;
 				INFOPLIST_FILE = Movie_Recommender/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cher.tsering.Movie-Recommender";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.islam.sarika.Movie-Recommender";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
