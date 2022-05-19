@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "3EAACECD-1D69-413C-8A8B-804327B5A6C4"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C64576C3-2CE2-41FC-874B-C593B4044AEF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Movie_Recommender/Screens/LikeListVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "C64576C3-2CE2-41FC-874B-C593B4044AEF - 8de7ac7164f3a1a5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Movie_Recommender.LikeListVC.__allocating_init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Movie_Recommender.LikeListVC"
+                  moduleName = "Movie_Recommender"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xxx.xxx/Documents/Movie_Recommender/Movie_Recommender/Screens/LikeListVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "31">
+               </Location>
+               <Location
+                  uuid = "C64576C3-2CE2-41FC-874B-C593B4044AEF - 6237d5fba8b0a23f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Movie_Recommender.LikeListVC.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Movie_Recommender.LikeListVC"
+                  moduleName = "Movie_Recommender"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xxx.xxx/Documents/Movie_Recommender/Movie_Recommender/Screens/LikeListVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "137">
+               </Location>
+               <Location
+                  uuid = "C64576C3-2CE2-41FC-874B-C593B4044AEF - 1303604fdbeb32da"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Movie_Recommender.LikeListVC.__allocating_init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Movie_Recommender.LikeListVC&gt;"
+                  moduleName = "Movie_Recommender"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xxx.xxx/Documents/Movie_Recommender/Movie_Recommender/Screens/LikeListVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "23">
+               </Location>
+               <Location
+                  uuid = "C64576C3-2CE2-41FC-874B-C593B4044AEF - fd3458c87a6490a4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Movie_Recommender.LikeListVC.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Movie_Recommender.LikeListVC&gt;"
+                  moduleName = "Movie_Recommender"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xxx.xxx/Documents/Movie_Recommender/Movie_Recommender/Screens/LikeListVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "97">
+               </Location>
+               <Location
+                  uuid = "C64576C3-2CE2-41FC-874B-C593B4044AEF - ada8a8dd3cde2b9f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Movie_Recommender.LikeListVC.__deallocating_deinit"
+                  moduleName = "Movie_Recommender"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xxx.xxx/Documents/Movie_Recommender/Movie_Recommender/Screens/LikeListVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F162C58A-5752-422D-81F1-F428388EC811"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Movie_Recommender/Screens/LikeListVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "LikeListVC"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "F162C58A-5752-422D-81F1-F428388EC811 - 8de7ac7164f3a1a5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Movie_Recommender.LikeListVC.__allocating_init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Movie_Recommender.LikeListVC"
+                  moduleName = "Movie_Recommender"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xxx.xxx/Documents/Movie_Recommender/Movie_Recommender/Screens/LikeListVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "31">
+               </Location>
+               <Location
+                  uuid = "F162C58A-5752-422D-81F1-F428388EC811 - 6237d5fba8b0a23f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Movie_Recommender.LikeListVC.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Movie_Recommender.LikeListVC"
+                  moduleName = "Movie_Recommender"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xxx.xxx/Documents/Movie_Recommender/Movie_Recommender/Screens/LikeListVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "137">
+               </Location>
+               <Location
+                  uuid = "F162C58A-5752-422D-81F1-F428388EC811 - 1303604fdbeb32da"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Movie_Recommender.LikeListVC.__allocating_init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Movie_Recommender.LikeListVC&gt;"
+                  moduleName = "Movie_Recommender"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xxx.xxx/Documents/Movie_Recommender/Movie_Recommender/Screens/LikeListVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "23">
+               </Location>
+               <Location
+                  uuid = "F162C58A-5752-422D-81F1-F428388EC811 - fd3458c87a6490a4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Movie_Recommender.LikeListVC.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Movie_Recommender.LikeListVC&gt;"
+                  moduleName = "Movie_Recommender"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xxx.xxx/Documents/Movie_Recommender/Movie_Recommender/Screens/LikeListVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "97">
+               </Location>
+               <Location
+                  uuid = "F162C58A-5752-422D-81F1-F428388EC811 - ada8a8dd3cde2b9f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Movie_Recommender.LikeListVC.__deallocating_deinit"
+                  moduleName = "Movie_Recommender"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xxx.xxx/Documents/Movie_Recommender/Movie_Recommender/Screens/LikeListVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

@@ -93,6 +93,7 @@ class SearchResultsViewController: UIViewController, UITableViewDelegate, UITabl
     // This function is called when the user selects an item(movie) in the table View
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let movie = searchResults[indexPath.row]
+        print(movie)
         self.performSegue(withIdentifier: "searchToDetails", sender: movie)
     }
     

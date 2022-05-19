@@ -339,3 +339,4 @@ class RecommendationViewController: UIViewController, UITableViewDelegate, UITab
     }
 
 }
+

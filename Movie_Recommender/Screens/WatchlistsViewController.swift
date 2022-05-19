@@ -32,6 +32,10 @@ class WatchlistsViewController: UIViewController, UITableViewDataSource,UITableV
         movieLists.append(movielist3)
         // Do any additional setup after loading the view.
         
+        self.tableV.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
+        self.tableV.separatorColor = UIColor.gray
+        self.tableV.tableHeaderView = UIView() // remove separator at the top of the list
+        self.tableV.separatorInset = UIEdgeInsets.init(top: 0.0, left: 10.0, bottom: 0, right: 10.0)
         self.tableV.allowsSelection = true
         self.tableV.isUserInteractionEnabled = true
         
@@ -60,7 +64,30 @@ class WatchlistsViewController: UIViewController, UITableViewDataSource,UITableV
         let cell = tableView.dequeueReusableCell(withIdentifier: "movielistitem", for: indexPath)
         let movielist = movieLists[indexPath.row]
         
+        let chevronImg = UIImage(systemName: "chevron.right")?.withTintColor(UIColor.lightGray, renderingMode: .alwaysTemplate)
+        let chevron = UIImageView(image: chevronImg)
+        chevron.tintColor = UIColor.lightGray
+
+        // chevron view
+        let accessoryViewHeight = cell.frame.height
+        let customDisclosureIndicator = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: accessoryViewHeight))
+        customDisclosureIndicator.addSubview(chevron)
+
+        // chevron constraints
+        chevron.translatesAutoresizingMaskIntoConstraints = false
+        chevron.trailingAnchor.constraint(equalTo: customDisclosureIndicator.trailingAnchor,constant: 0).isActive = true
+        chevron.centerYAnchor.constraint(equalTo: customDisclosureIndicator.centerYAnchor).isActive = true
+
+        // Assign the custom accessory view to the cell
+        customDisclosureIndicator.backgroundColor = .clear
+        cell.accessoryView = customDisclosureIndicator
+        
+        // Remove the last separator of the list.
+        if indexPath.row == 2 {
+            self.tableV.separatorInset = UIEdgeInsets(top: 0, left: .greatestFiniteMagnitude, bottom: 0, right: 0)
+        }
         configureText(for: cell, with: movielist)
+        cell.selectionStyle = .none
         return cell
     }
     

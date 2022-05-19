@@ -61,7 +61,7 @@ class DiscoverViewController: UIViewController, UITableViewDataSource, UITableVi
         let sectionHeaderLabel = UILabel()
         sectionHeaderLabel.text = movie_groups[section]
         sectionHeaderLabel.textColor = .white
-        sectionHeaderLabel.font = UIFont.boldSystemFont(ofSize: 25.0)
+        sectionHeaderLabel.font = UIFont.boldSystemFont(ofSize: 25.0) 
         sectionHeaderLabel.frame = CGRect(x: 20, y: 5, width: 250, height: 40)
         sectionHeaderView.addSubview(sectionHeaderLabel)
         
@@ -133,11 +133,11 @@ class DiscoverViewController: UIViewController, UITableViewDataSource, UITableVi
         //      From TMDB doc: To build an image URL, you will need 3 pieces of data. The base_url, size and file_path. Simply combine them all and you will have a fully qualified URL.
         let img_base_url = "https://image.tmdb.org/t/p/"
         let poster_size = "w185" //w342
-        let poster_path = movie["poster_path"] as! String
+        let poster_path = movie["poster_path"] as? String ?? ""
         let imgURLString = (img_base_url + poster_size + poster_path)
         let imgURL = URL(string: imgURLString)
         
-        cell.imageView.af.setImage(withURL: imgURL!) //URL is an optional object so force unwrap
+        cell.imageView.af.setImage(withURL: imgURL!, placeholderImage: UIImage(named: "no_image_available")) //URL is an optional object so force unwrap
         return cell
     }
     
@@ -225,7 +225,14 @@ class DiscoverViewController: UIViewController, UITableViewDataSource, UITableVi
     
     
     func getUpcomingMovies() {
-        let urlString = "https://api.themoviedb.org/3/movie/upcoming?api_key=\(api_key)" //url String
+//        get current time
+        let currentTime = Date();
+        let df = DateFormatter();
+        df.dateFormat = "yyyy-MM-dd";
+        let dateString = df.string(from: currentTime);
+//        print(dateString)
+        
+        let urlString = "https://api.themoviedb.org/3/movie/upcoming?api_key=\(api_key)&page=9" //url String
         let url = URL(string: urlString)!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         let session = URLSession.shared
@@ -237,8 +244,9 @@ class DiscoverViewController: UIViewController, UITableViewDataSource, UITableVi
                 let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
                 
                 self.upcomingListAll = dataDictionary["results"] as! [[String : Any]]
+                self.upcomingListAll = self.upcomingListAll.filter {$0["release_date"] as! String > dateString} // filter out the upcoming movies based on current time
                 self.upcomingList = Array(self.upcomingListAll.prefix(upTo: 10)) // gets only the first 10 movies returned by API
-                //                print(self.upcomingList)
+//                print(self.upcomingList)
                 self.movie_categories[2] = self.upcomingList
                 self.movie_categoriesWithAll[2] = self.upcomingListAll
                 
