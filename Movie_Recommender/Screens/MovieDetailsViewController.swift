@@ -24,8 +24,6 @@ class MovieDetailsViewController: UIViewController, UICollectionViewDelegate, UI
     var likeSelected:Bool?;
     var movieSelected: [String:Any]!
     var movieProviders: [[String: Any]]!
-    //var lastSelectButton: UIButton()
-    //var providerformovie: [[String: Any]]!
     var networkCallDone = false
     let api_key = "f6fcc9cb0a418a35f977477bc4f8f0af"
     
@@ -58,9 +56,9 @@ class MovieDetailsViewController: UIViewController, UICollectionViewDelegate, UI
         checkIfMovieAlreadyLiked()
     }
     
-    // Check if a movie is liked or not from CoreData
+    // Check if a movie is liked or not from Core Data
     // If a user already liked a movie, update the corresponding button to a green thumbs up image
-    // Otherwise, leave it as a red thumbs down image
+    // Otherwise, leave it as a white, unfilled thumbs up image
     func checkIfMovieAlreadyLiked(){
         let managedObjectContext = appDel.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "LikeItem")
@@ -70,7 +68,7 @@ class MovieDetailsViewController: UIViewController, UICollectionViewDelegate, UI
         do {
             results = try managedObjectContext.fetch(fetchRequest) as! [LikeItem]
             if results.count > 0 {
-                // if selected movie is already liked, then take that movie and update thumbs up button based on isLike boolean variable
+				// Update thumbs up button based on boolean value isLike
                 self.storedItem = results[0]
                 print("Movie exist")
                 likeSelected = self.storedItem!.isLike
@@ -206,8 +204,8 @@ class MovieDetailsViewController: UIViewController, UICollectionViewDelegate, UI
         return cell
     }
     
-    // When the thumbs up image is pressed, turns it green
-    // If the user clicks on the thumbs up image again, switch to a orange color thumbs down image
+    // When the thumbs up button is pressed, turns thumbs up image green.
+    // If the user clicks on the thumbs up button again, switch to a unfilled white thumbs up image.
     @IBAction func likeBtnPress(_ sender: UIButton) {
         if let _ = likeSelected   {
             likeSelected = !likeSelected!
@@ -299,14 +297,18 @@ class MovieDetailsViewController: UIViewController, UICollectionViewDelegate, UI
         
         let fetchRequest2 = NSFetchRequest<NSManagedObject>(entityName: "WatchedItem")
         
+//		A notification for a successful attempt of adding movie to Watch List.
         let watchNotifySuccess = UIAlertController (title: "You successfully added the movie to Watch List", message: nil, preferredStyle: UIAlertController.Style.alert)
         let cancelwatchNotify = UIAlertAction(title: "Done", style: UIAlertAction.Style.cancel, handler: nil)
                watchNotifySuccess.addAction(cancelwatchNotify)
-        
+ 
+//		A notification for an unsuccessful attempt.
+//		Case 1: movie is already in Watch List.
         let watchNotifyFailure1 = UIAlertController (title: "Movie is already in Watch List", message: nil, preferredStyle: UIAlertController.Style.alert)
         let cancelwatchNotify1 = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
                watchNotifyFailure1.addAction(cancelwatchNotify1)
         
+//		Case 2: movie is in Watched List.
         let watchNotifyFailure2 = UIAlertController (title: "Movie is in Watched List", message: nil, preferredStyle: UIAlertController.Style.alert)
         let cancelwatchNotify2 = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
                watchNotifyFailure2.addAction(cancelwatchNotify2)
@@ -372,18 +374,23 @@ class MovieDetailsViewController: UIViewController, UICollectionViewDelegate, UI
         
         let fetchRequest2 = NSFetchRequest<NSManagedObject>(entityName: "WatchItem")
         
+//		A notification for a successful attempt of adding movie to Watched List.
         let watchedNotifySuccess = UIAlertController (title: "You successfully added the movie to Watched List", message: nil, preferredStyle: UIAlertController.Style.alert)
         let cancelwatchedNotify = UIAlertAction(title: "Done", style: UIAlertAction.Style.cancel, handler: nil)
                watchedNotifySuccess.addAction(cancelwatchedNotify)
-        
+
+//		A notification for an unsuccessful attempt.
+//		Case 1: movie is already in Watched List.
         let watchedNotifyFailure1 = UIAlertController (title: "Movie is already in Watched List", message: nil, preferredStyle: UIAlertController.Style.alert)
         let cancelwatchedNotify1 = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
                watchedNotifyFailure1.addAction(cancelwatchedNotify1)
         
+//		Case 2: movie is in Watch List.
         let watchedNotifyFailure2 = UIAlertController (title: "Movie is in Watch List", message: nil, preferredStyle: UIAlertController.Style.alert)
         let cancelwatchedNotify2 = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
                watchedNotifyFailure2.addAction(cancelwatchedNotify2)
 		
+//		Case 3: movie is not released yet.
 		let watchedNotifyFailure3 = UIAlertController (title: "Movie is not released yet.", message: nil, preferredStyle: UIAlertController.Style.alert)
 		let cancelwatchedNotify3 = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
 			   watchedNotifyFailure3.addAction(cancelwatchedNotify3)
@@ -458,10 +465,6 @@ class MovieDetailsViewController: UIViewController, UICollectionViewDelegate, UI
 		
 		let fetchRequest2 = NSFetchRequest<NSManagedObject>(entityName: "WatchItem")
 		
-//		let watchedNotifySuccess = UIAlertController (title: "You successfully added the movie to both Likes List and Watched List", message: nil, preferredStyle: UIAlertController.Style.alert)
-//		let cancelwatchedNotify = UIAlertAction(title: "Done", style: UIAlertAction.Style.cancel, handler: nil)
-//			   watchedNotifySuccess.addAction(cancelwatchedNotify)
-		
 		// filtering entities with id
 		// check for the specific movie id in the entity
 		fetchRequest1.predicate = NSPredicate(format: "id == %d",idVal)
@@ -490,8 +493,6 @@ class MovieDetailsViewController: UIViewController, UICollectionViewDelegate, UI
 				item.video = movieSelected["video"] as! Bool
 				item.vote_average = movieSelected["vote_average"] as! Double
 				item.vote_count = movieSelected["vote_count"] as! Int16
-//				self.present(watchedNotifySuccess, animated:true, completion:nil)
-				
 				appDel.saveContext() // save selected movie item to CoreData
 			}
 		}

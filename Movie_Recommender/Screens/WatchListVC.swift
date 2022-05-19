@@ -34,13 +34,6 @@ class WatchListVC: UIViewController {
     }
 }
 
-// Remove separator at the bottom of the list
-//extension UITableViewCell{
-//    func separator(hide: Bool) {
-//        separatorInset.right = .greatestFiniteMagnitude
-//    }
-//}
-
 // A table view that contains a list of watch movies.
 extension WatchListVC:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -71,33 +64,13 @@ extension WatchListVC:UITableViewDelegate,UITableViewDataSource{
         
         cell.imgV.af.setImage(withURL: imgURL!, placeholderImage: UIImage(named: "no_image_available"))
         cell.titleLbl.text = item.title
-//        cell.firstBtn.tag = indexPath.row
         cell.secondBtn.tag = indexPath.row
         cell.secondBtn.layer.cornerRadius = 5.0
         cell.secondBtn.titleEdgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
-//        cell.firstBtn.addTarget(self, action: #selector(moveToLike(sender:)), for: .touchUpInside)
         cell.secondBtn.addTarget(self, action: #selector(moveToWatched(sender:)), for: .touchUpInside)
         tableView.separatorColor = UIColor.gray
         tableView.tableHeaderView = UIView() // remove separator at the top of the list
         cell.separatorInset = UIEdgeInsets.init(top: 0.0, left: 10.0, bottom: 0, right: 10.0)
-//        if indexPath.row == items.count-1 {
-////        remove separator at the bottom of the list (has to reload to make other separators to be visible)
-//            cell.separatorInset = UIEdgeInsets.init(top: 0.0, left: 0.0, bottom: 0.0, right: .greatestFiniteMagnitude)
-//        }
-        // Buttons receive null values when a movie is deleted from CoreData, and crash the app.
-        // let imgV = cell!.viewWithTag(1) as! UIImageView
-        // imgV.af.setImage(withURL: imgURL!)
-        //
-        // let lbl = cell!.viewWithTag(2) as! UILabel
-        // lbl.text = item.title
-        //
-        // let likeBtn = cell!.viewWithTag(3) as! UIButton
-        // likeBtn.tag = indexPath.row
-        // likeBtn.addTarget(self, action: #selector(moveToLike(sender:)), for: .touchUpInside)
-        //
-        // let watchedBtn = cell!.viewWithTag(4) as! UIButton
-        // watchedBtn.tag = indexPath.row
-        // watchedBtn.addTarget(self, action: #selector(moveToWatched(sender:)), for: .touchUpInside)
         return cell
     }
 
@@ -111,16 +84,10 @@ extension WatchListVC:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            print("delete")
+//            print("delete")
             deleteItem(indexNo: indexPath.row)
         }
     }
-    
-//    // This function is called when the user selects an item(movie) in the table View
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let movie = items[indexPath.row]
-//        self.performSegue(withIdentifier: "searchToDetails", sender: movie)
-//    }
     
     // Delete a movie from list and remove the item from CoreData.
     func deleteItem(indexNo:Int){
@@ -129,51 +96,6 @@ extension WatchListVC:UITableViewDelegate,UITableViewDataSource{
         appDel.saveContext()
         fetchStoredRecords()
     }
-    
-    // Add the movie to like list.
-//    @objc func moveToLike(sender:UIButton){
-//
-//        let clickedItem = items[sender.tag]
-//        let managedObjectContext = appDel.persistentContainer.viewContext
-//        var results: [LikeItem] = []
-//        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "LikeItem")
-//
-//        // filtering entities with id
-//        fetchRequest.predicate = NSPredicate(format: "id == %d",clickedItem.id)
-//
-//        do {
-//            results = try managedObjectContext.fetch(fetchRequest) as! [LikeItem]
-//
-//            var item : LikeItem!
-//            if results.count == 0 {
-//                item = LikeItem(context: managedObjectContext)
-//                item.isLike = true // Set isLike to true
-//            }else{
-//                item = results[0]
-//            }
-//            item.adult = clickedItem.adult
-//            item.backdrop_path = clickedItem.backdrop_path
-//            item.id = clickedItem.id
-//            item.media_type = clickedItem.media_type
-//            item.original_language = clickedItem.original_language
-//            item.original_title = clickedItem.original_title
-//            item.overview = clickedItem.overview
-//            item.popularity = clickedItem.popularity
-//            item.poster_path = clickedItem.poster_path
-//            item.release_date = clickedItem.release_date
-//            item.title = clickedItem.title
-//            item.video = clickedItem.video
-//            item.vote_average = clickedItem.vote_average
-//            item.vote_count = clickedItem.vote_count
-//
-//            appDel.saveContext()
-//
-//        }
-//        catch {
-//            print("error executing fetch request: \(error)")
-//        }
-//
-//    }
     
     // Move the movie to Watched List.
     @objc func moveToWatched(sender:UIButton){
@@ -254,17 +176,4 @@ extension WatchListVC:UITableViewDelegate,UITableViewDataSource{
             print("error executing fetch request: \(error)")
         }
     }
-    
-    
-//    // MARK: - Navigation
-//
-//    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        // Get the new view controller using segue.destination.
-//        // Pass the selected object to the new view controller.
-//
-//        let detailsVC = segue.destination as! MovieDetailsViewController
-//        detailsVC.movieSelected = sender as! [String:Any]?// note that the movie was passed as argument for sender
-//
-//    }
 }
