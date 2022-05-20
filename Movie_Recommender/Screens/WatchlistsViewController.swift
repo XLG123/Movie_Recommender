@@ -19,16 +19,16 @@ class WatchlistsViewController: UIViewController, UITableViewDataSource,UITableV
         
         // Create the first object to be stored in the array
         let movielist1 = MovieListItem()
-        movielist1.listTitle = "Watch List"
+        movielist1.listTitle = "Want to Watch"
         movieLists.append(movielist1)
         
         // Create the second object to be stored in the array
         let movielist2 = MovieListItem()
-        movielist2.listTitle = "Watched List"
+        movielist2.listTitle = "Watched"
         movieLists.append(movielist2)
         
         let movielist3 = MovieListItem()
-        movielist3.listTitle = "Likes List"
+        movielist3.listTitle = "Likes ♥"
         movieLists.append(movielist3)
         // Do any additional setup after loading the view.
         
@@ -45,7 +45,7 @@ class WatchlistsViewController: UIViewController, UITableViewDataSource,UITableV
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationItem.title = "Watchlists"
+        self.navigationItem.title = "My Watchlists"
     }
     
     override func viewWillDisappear(_ animated: Bool) {

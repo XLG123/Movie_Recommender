@@ -13,6 +13,10 @@ class ViewMoreCell: UITableViewCell {
     
     @IBOutlet weak var movieTitle: UILabel!
     
+    @IBOutlet weak var movieDate: UILabel!
+    
+    @IBOutlet weak var movieTagLine: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

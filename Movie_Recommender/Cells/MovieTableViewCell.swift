@@ -13,6 +13,9 @@ class MovieTVC: UITableViewCell {
     @IBOutlet weak var firstBtn: UIButton!
     @IBOutlet weak var secondBtn: UIButton!
     
+    @IBOutlet weak var movieDate: UILabel!
+    @IBOutlet weak var movieTagLine: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

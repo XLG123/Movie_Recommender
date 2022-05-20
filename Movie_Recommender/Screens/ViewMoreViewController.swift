@@ -49,12 +49,30 @@ class ViewMoreViewController: UIViewController, UITableViewDataSource, UITableVi
         let movies = movies_list?[movies_category!]
         let movie = movies![indexPath.row]
         
+        print(movie)
+        
+        //set title
         if movie["title"] != nil {
             cell.movieTitle.text = (movie["title"] as! String)
         } else {
             cell.movieTitle.text = (movie["name"] as! String)
         }
         
+        //set release date
+        if (movie["release_date"]) != nil{
+            cell.movieDate.text = (movie["release_date"] as! String)
+        } else {
+            cell.movieDate.text = ""
+        }
+        
+        //set tagline
+        if (movie["overview"]) != nil{
+            cell.movieTagLine.text = (movie["overview"] as! String)
+        } else {
+            cell.movieTagLine.text = ""
+        }
+        
+        //set image
         let img_base_url = "https://image.tmdb.org/t/p/"
         let poster_size = "w185" //w342
         guard let poster_path = movie["poster_path"] as? String else {

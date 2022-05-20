@@ -29,7 +29,7 @@ class SearchResultsViewController: UIViewController, UITableViewDelegate, UITabl
         
         searchResultsTableView.delegate = self
         searchResultsTableView.dataSource = self
-        searchResultsTableView.rowHeight = 170
+        searchResultsTableView.rowHeight = 230
         
         // Do any additional setup after loading the view.
     }
@@ -72,10 +72,27 @@ class SearchResultsViewController: UIViewController, UITableViewDelegate, UITabl
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchResultCell") as! searchResultCell
         
         let movie = searchResults[indexPath.row]
+        
+        //set title
         if movie["title"] != nil {
             cell.label.text = (movie["title"] as! String)
         }
         
+        //set release date
+        if (movie["release_date"]) != nil{
+            cell.movieDate.text = (movie["release_date"] as! String)
+        } else {
+            cell.movieDate.text = ""
+        }
+        
+        //set overview
+        if (movie["overview"]) != nil{
+            cell.movieTagLine.text = (movie["overview"] as! String)
+        } else {
+            cell.movieTagLine.text = ""
+        }
+        
+        //set movie image
         let img_base_url = "https://image.tmdb.org/t/p/"
         let poster_size = "w185" //w342
         guard let poster_path = movie["poster_path"] as? String else {

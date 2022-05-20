@@ -19,9 +19,17 @@ class LikeListVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "Likes List"
+        self.navigationItem.title = "Likes ♥"
         fetchStoredRecords() // Fetch all data once the view loads.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchStoredRecords()
+        self.tableV.reloadData()
+        
+    }
+    
     
     // Fetch all liked movies from CoreData.
     func fetchStoredRecords(){
@@ -45,6 +53,36 @@ class LikeListVC: UIViewController {
             print("data might be corrupted, error: \(error)")
         }
     }
+    
+    // ChangeHere
+    // MARK: - Navigation
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+     
+        let detailsVC = segue.destination as! MovieDetailsViewController //destination view controller
+        let item = sender as! LikeItem
+        var movieSelected = [String: Any]()
+        movieSelected["adult"] = item.adult
+        movieSelected["backdrop_path"] = item.backdrop_path
+        movieSelected["id"] = Int(item.id)
+        movieSelected["media_type"] = item.media_type
+        movieSelected["original_language"] = item.original_language
+        movieSelected["original_title"] = item.original_title
+        movieSelected["overview"] = item.overview
+        movieSelected["popularity"] = item.popularity
+        movieSelected["poster_path"] = item.poster_path
+        movieSelected["release_date"] = item.release_date
+        movieSelected["title"] = item.title
+        movieSelected["video"] = item.video
+        movieSelected["vote_average"] = item.vote_average
+        movieSelected["vote_count"] = item.vote_count
+        
+        detailsVC.movieSelected = movieSelected as [String:Any]?
+        
+    }
+    
 }
 
 // A table view that contains a list of liked movies based on the user preferences.
@@ -69,6 +107,23 @@ extension LikeListVC:UITableViewDelegate,UITableViewDataSource{
         let item = items[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! MovieTVC
         cell.selectionStyle = .none
+        
+        //Add release date and tagline here
+        
+        //set release date
+        if (item.release_date) != nil{
+            cell.movieDate.text = item.release_date
+        } else {
+            cell.movieDate.text = ""
+        }
+        
+        //set overview
+        if (item.overview) != nil{
+            cell.movieTagLine.text = item.overview
+        } else {
+            cell.movieTagLine.text = ""
+        }
+        
         let img_base_url = "https://image.tmdb.org/t/p/"
         let poster_size = "w185" //w342
         let poster_path = item.poster_path ?? ""
@@ -77,9 +132,9 @@ extension LikeListVC:UITableViewDelegate,UITableViewDataSource{
         
         cell.imgV.af.setImage(withURL: imgURL!, placeholderImage: UIImage(named: "no_image_available"))
         cell.titleLbl.text = item.title
-        tableView.separatorColor = UIColor.gray
-        tableView.tableHeaderView = UIView() // remove separator at the top of the list
-        cell.separatorInset = UIEdgeInsets.init(top: 0.0, left: 10.0, bottom: 0, right: 10.0)
+        //tableView.separatorColor = UIColor.gray
+        //tableView.tableHeaderView = UIView() // remove separator at the top of the list
+        //cell.separatorInset = UIEdgeInsets.init(top: 0.0, left: 10.0, bottom: 0, right: 10.0)
         return cell
     }
     
@@ -96,6 +151,12 @@ extension LikeListVC:UITableViewDelegate,UITableViewDataSource{
 //            print("delete")
             deleteItem(indexNo: indexPath.row)
         }
+    }
+    
+    // ChangeHere
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let movie = items[indexPath.row]
+        self.performSegue(withIdentifier: "likedListToDetails", sender: movie)
     }
     
     // Remove movie from Likes List.

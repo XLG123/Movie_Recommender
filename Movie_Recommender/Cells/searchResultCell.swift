@@ -14,6 +14,10 @@ class searchResultCell: UITableViewCell {
     
     @IBOutlet weak var label: UILabel!
     
+    @IBOutlet weak var movieDate: UILabel!
+    
+    @IBOutlet weak var movieTagLine: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
